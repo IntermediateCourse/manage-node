@@ -1,0 +1,25 @@
+{
+  "name": "accountManage",
+  "version": "0.0.1",
+  "homepage": "https://github.com/IntermediateCourse/manage-node",
+  "authors": [
+    "korealiang <hanguoliang1992@gmail.com>"
+  ],
+  "description": "demo node express",
+  "moduleType": [
+    "amd",
+    "es6"
+  ],
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

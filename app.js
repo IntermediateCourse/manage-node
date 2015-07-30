@@ -43,9 +43,15 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-//require('./Schema/user.js');
-
-
+app.use(function(req,res,next){
+  res.success = function(data){
+    res.status(200).json({success:true,data:data});
+  };
+  res.error = function(msg) {
+    res.status(200).json({success:false,msg:msg});
+  }
+  next();
+})
 app.use('/', routes);
 app.use('/users', users);
 app.use('/accout',accout);

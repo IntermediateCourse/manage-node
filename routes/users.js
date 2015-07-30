@@ -18,24 +18,24 @@ router.get('/',isLogin,function(req,res){
 })
 
 
-router.get('/login', function(req, res, next) {
-  var userName = req.query.name;
-  var password = req.query.password;
+router.post('/login', function(req, res, next) {
+  var userName = req.body.name;
+  var password = req.body.password;
   if(userName&&password){
   	 userController.login(userName,password,function(err,result){
   	 	if(err){
-        return res.send(err.message);
+        return res.error(err.message);
   	 	}
       req.session.isLogin = true;
       req.session.user = result;
-  	 	return res.redirect('./');
+  	 	return res.success();
   	 });
   }else{
-  	return res.send('用户名和密码不足');
+  	return res.error('用户名和密码不足');
   }
 });
 
-router.get('/register',function(req,res){
+router.post('/register',function(req,res){
   var userName = req.query.name;
   var password = req.query.password;
   if(userName&&password){
@@ -56,12 +56,12 @@ router.get('/modify',isLogin,function(req,res){
   if(userName&&password){
     userController.modify(userName,password,function(err,result){
       if(err){
-        return res.send(err.message);
+        return res.json(err.message);
       }
       return res.json(result);
     })
   }else{
-    return res.send('用户名和密码不足');
+    return res.json({success:false,msg:'用户名和密码不足'});
   }
 })
 

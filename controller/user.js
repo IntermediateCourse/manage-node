@@ -19,7 +19,7 @@ var userController = {
 			if(!result){
 				return cb(new Error('用户未注册'));
 			}
-			if(password == '123456'){
+			if(password == result.password){
 				return cb(null,result);
 			}
 			
