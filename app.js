@@ -1,6 +1,6 @@
 var express = require('express');
 var session = require('express-session');
-
+//var mongoStore = require('connect-mongostore')(session);
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -35,6 +35,10 @@ app.use(session({
   secret:'hello world',
   resave:false,
   saveUninitialized:true
+  /*store:new mongoStore({
+    url:mongooseDB,
+    collections:'sessions'
+  })*/
 }));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -52,6 +56,17 @@ app.use(function(req,res,next){
   }
   next();
 })
+
+app.use(function(req,res,next){
+  if(req.session.user){
+    app.locals.user = req.session.user;
+  }else{
+    delete app.locals.user
+  }
+  next();
+})
+
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/accout',accout);
@@ -92,8 +107,8 @@ app.use(function(err, req, res, next) {
 //检查是否登录了
 
 
+mongoose.set('debug',true);
+
 
 
 module.exports = app;
-
-

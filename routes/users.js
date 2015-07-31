@@ -28,7 +28,7 @@ router.post('/login', function(req, res, next) {
   	 	}
       req.session.isLogin = true;
       req.session.user = result;
-  	 	return res.success();
+      return res.success();
   	 });
   }else{
   	return res.error('用户名和密码不足');
@@ -70,7 +70,8 @@ router.get('/logout',function(req,res,next){
     if(err){
       return res.send(err);
     }
-    return res.send('no login');
+    //delete app.locals.user
+    return res.redirect('/');
   });
 })
 
