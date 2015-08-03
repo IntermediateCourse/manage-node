@@ -15,10 +15,7 @@
 	<div class="col-sm-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div class="panel-title"><a href="###">菜单导航</a></div>
-			</div>
-			<div class="panel-body">
-				<p>这个是导航的菜单内容</p>
+				<h3 class="panel-title"><span href="###">菜单导航</span></h3>
 			</div>
 			<ul class="list-group">
 				<li class="list-group-item"><a href="###">会计管理</a></li>
@@ -28,36 +25,136 @@
 		</div>
 	</div>
 	<div class="col-sm-9">
-		<div class="well">
-			<ol class="breadcrumb">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Library</a></li>
-				<li class="active">Data</li>
-			</ol>
-		</div>
-		<h1>hello world</h1>
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<a href="###">表格数据</a>
+				<h3 class="panel-title">会计管理</a>
+				</div>
+				<div class="panel-body">
+					<div class="panel search-panel clearfix">
+						<form class="form form-inline">
+							<div class="form-group col-sm-6">
+								<label class="control-label sr-only">登记日期</label>
+								<div class="input-group col-sm-5">
+									<input type="text" class="form-control" placeholder="开始时间" />
+									<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+								</div>
+								<div class="input-group col-sm-5">
+									<input type="text" class="form-control" placeholder="结束时间" />
+									<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+								</div>
+							</div>
+							<div class="form-group col-sm-4">
+								<div class="input-group">
+									<!-- <div class="input-group-addon">
+										<select>
+											<option value="1">会计姓名</option>
+											<option value="2">会计电话</option>
+											<option value="3">公司名称</option>
+											<option value="4">公司税号</option>
+										</select>
+									</div> -->
+									<div class="input-group-btn">
+										<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="select-value">会计姓名</span> <span class="caret"></span></button>
+										<ul class="dropdown-menu select-options">
+											<li><a href="#">会计姓名</a></li>
+											<li><a href="#">会计电话</a></li>
+											<li><a href="#">公司名称</a></li>
+											<li><a href="#">公司税号</a></li>
+										</ul>
+									</div>
+									<input type="text" class="form-control">
+								</div>
+								
+							</div>
+							<div class="form-group col-sm-2">
+								<button class="form-control btn btn-default">
+									<i class="glyphicon glyphicon-search"></i>
+									搜索
+								</button>
+							</div>
+						</form>
+					</div>
+					<div class="btn-group-fields clearfix">
+						<div class="btn-group pull-left">
+							<button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>添加</button>
+							<button class="btn btn-info"><i class="glyphicon glyphicon-pencil"></i>修改</button>
+						</div>
+						<div class="btn-group pull-right">
+							<button class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>
+								删除</button>
+							</div>
+						</div>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-bordered table-striped table-hover table-condensed">
+							<thead>
+								<tr>
+									<th>序号</th>
+									<th>内容</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td> 
+										<div class="checkbox">
+											<label class="checkbox"><input type="checkbox"><span class="badge">1</span></label>	
+										</div>
+									</td>
+									<td><span>这个是内容</span></td>
+								</tr>
+								<tr>
+									<td>
+										<div class="checkbox">
+											<label class="checkbox"><input type="checkbox"><span class="badge">2</span></label>	
+										</div>
+									</td>
+									<td>这个是内容</td>
+								</tr>
+								<tr>
+									<td>
+										<div class="checkbox">
+											<label class="checkbox"><input type="checkbox"><span class="badge">3</span></label>	
+										</div>
+									</td>
+									<td>这个是内容</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="panel-footer clearfix">
+						<div class="pull-left">
+							<p class="empty-margin" style="line-height:29px">
+								<span>一页显示</span>
+								<select>
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="15">15</option>
+								</select>
+								<span>行</span>
+							</p> 
+						</div>
+						<ul class="pagination pull-right pagination-sm empty-margin">
+							<li><a href="###">&laquo;</a></li>
+							<li><a href="###" class="active">1</a></li>
+							<li><a href="###">2</a></li>
+							<li><a href="###">3</a></li>
+							<li><a href="###">4</a></li>
+							<li><a href="###">5</a></li>
+							<li><a href="###">&raquo;</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
-			<div class="panel-body">
-				
-			</div>
-			<table class="table table-borded">
-				<thead>
-					<tr>
-						<th>序号</th>
-						<th>内容</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><span class="edage">1</span></td>
-						<td>这个是内容</td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
 	</div>
-</div>
 
+<script>
+$(function(){
+	$('.select-options li').each(function(i,item){
+		var name = item.innertText||item.textContent;
+		$(item).click(function(e){
+			$('.select-value').html(name);
+		})
+	})
+})
+</script>

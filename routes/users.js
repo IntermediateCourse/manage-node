@@ -23,9 +23,9 @@ router.post('/login', function(req, res, next) {
   var password = req.body.password;
   if(userName&&password){
   	 userController.login(userName,password,function(err,result){
-  	 	if(err){
+      if(err){
         return res.error(err.message);
-  	 	}
+      }
       req.session.isLogin = true;
       req.session.user = result;
       return res.success();
