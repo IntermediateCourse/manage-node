@@ -1,3 +1,4 @@
 {
-	"directionary":"public/lib"
+	"directory":"public/lib",
+	"json":"bower.json"
 }

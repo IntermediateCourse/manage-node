@@ -12,35 +12,44 @@
 
 
 <div class="container-fluid">
+	<div class="row">
 	<div class="col-sm-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title"><span href="###">菜单导航</span></h3>
 			</div>
-			<ul class="list-group">
-				<li class="list-group-item"><a href="###">会计管理</a></li>
-				<li class="list-group-item"><a href="###">公司管理</a></li>
-				<li class="list-group-item"><a href="###">用户管理</a></li>
-			</ul>
+			<div class="list-group">
+				<a href="###" class="list-group-item active">会计管理</a>
+				<a href="###" class="list-group-item">企业管理</a>
+				<a href="###" class="list-group-item">用户管理</a>
+			</div>
 		</div>
 	</div>
 	<div class="col-sm-9">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">会计管理</a>
+				<h3 class="panel-title">企业管理</a>
 				</div>
 				<div class="panel-body">
 					<div class="panel search-panel clearfix">
-						<form class="form form-inline">
+						<form class="form form-inline search-form">
 							<div class="form-group col-sm-6">
 								<label class="control-label sr-only">登记日期</label>
-								<div class="input-group col-sm-5">
+								<div class="input-group col-sm-5 date">
 									<input type="text" class="form-control" placeholder="开始时间" />
-									<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+									<div class="input-group-btn">
+										<span class="btn btn-default">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</span>
+									</div>
 								</div>
-								<div class="input-group col-sm-5">
+								<div class="input-group col-sm-5 date">
 									<input type="text" class="form-control" placeholder="结束时间" />
-									<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+									<div class="input-group-btn">
+										<span class="btn btn-default">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</span>
+									</div>
 								</div>
 							</div>
 							<div class="form-group col-sm-4">
@@ -61,12 +70,13 @@
 											<li><a href="#">公司名称</a></li>
 											<li><a href="#">公司税号</a></li>
 										</ul>
+										<input type="hidden" name="searchType" id="searchType">
 									</div>
 									<input type="text" class="form-control">
 								</div>
 								
 							</div>
-							<div class="form-group col-sm-2">
+							<div class="form-group col-sm-2 text-right">
 								<button class="form-control btn btn-default">
 									<i class="glyphicon glyphicon-search"></i>
 									搜索
@@ -74,7 +84,7 @@
 							</div>
 						</form>
 					</div>
-					<div class="btn-group-fields clearfix">
+					<div class="btn-group-fields container-fluid clearfix">
 						<div class="btn-group pull-left">
 							<button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>添加</button>
 							<button class="btn btn-info"><i class="glyphicon glyphicon-pencil"></i>修改</button>
@@ -134,8 +144,8 @@
 							</p> 
 						</div>
 						<ul class="pagination pull-right pagination-sm empty-margin">
-							<li><a href="###">&laquo;</a></li>
-							<li><a href="###" class="active">1</a></li>
+							<li class="disabled"><a href="###">&laquo;</a></li>
+							<li class="active"><a href="###">1</a></li>
 							<li><a href="###">2</a></li>
 							<li><a href="###">3</a></li>
 							<li><a href="###">4</a></li>
@@ -147,14 +157,26 @@
 			</div>
 		</div>
 	</div>
+	</div>
+</div>
 
 <script>
 $(function(){
+	var _searchType = ['会计姓名','会计电话','公司名称','公司税号'];
 	$('.select-options li').each(function(i,item){
 		var name = item.innertText||item.textContent;
 		$(item).click(function(e){
+			$('#searchType').val(i);
 			$('.select-value').html(name);
 		})
-	})
+	});
+
+	$('.date').datepicker({
+		autoclose:true
+	});
+
+	/*$('.search-form').submit(function(e) {
+		e.preventDefault();
+	});*/
 })
 </script>
