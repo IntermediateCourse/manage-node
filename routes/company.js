@@ -15,9 +15,9 @@ var isLogin = function(req,res,next){
 router.get('/',function(req,res,next){
 	companyControl.getList(function(err,result){
 		if(err){
-			return res.send(err);
+			return res.error(err);
 		}
-		return res.send(result);
+		return res.success(result);
 	})
 });
 

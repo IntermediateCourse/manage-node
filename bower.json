@@ -23,6 +23,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-datepicker": "~1.4.0"
+    "bootstrap-datepicker": "~1.4.0",
+    "requirejs": "~2.1.20"
   }
 }
